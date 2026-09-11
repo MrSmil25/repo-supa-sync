@@ -26,7 +26,7 @@ type Tab = "catatan" | "analitik";
 
 export const Route = createFileRoute("/_authenticated/content-performance")({
   validateSearch: (search: Record<string, unknown>): { tab: Tab } => ({
-    tab: search.tab === "analitik" ? "analitik" : "catatan",
+    tab: search['tab'] === "analitik" ? "analitik" : "catatan",
   }),
   head: () => ({
     meta: [
