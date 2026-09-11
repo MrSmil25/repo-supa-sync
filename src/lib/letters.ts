@@ -127,7 +127,7 @@ export function dailyLimitFor(template: LetterTemplate): number | null {
 }
 
 const SELECT =
-  "*, requester:profiles!letters_requester_id_fkey(full_name,division), approver:profiles!letters_approved_by_fkey(full_name)";
+  "*, requester:profiles!requester_id(full_name,division), approver:profiles!approved_by(full_name)";
 
 async function runSelect(build: (q: ReturnType<typeof baseQuery>) => unknown): Promise<Letter[]> {
   const query = build(baseQuery()) as {
