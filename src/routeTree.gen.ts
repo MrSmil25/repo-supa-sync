@@ -53,6 +53,7 @@ import { Route as AuthenticatedEventsIdRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedFundRequestsIndexRouteImport } from './routes/_authenticated/fund-requests.index'
 import { Route as AuthenticatedFundRequestsIdRouteImport } from './routes/_authenticated/fund-requests.$id'
 import { Route as AuthenticatedLettersIndexRouteImport } from './routes/_authenticated/letters.index'
+import { Route as AuthenticatedLettersRequestRouteImport } from './routes/_authenticated/letters.request'
 import { Route as AuthenticatedMeetingsIndexRouteImport } from './routes/_authenticated/meetings.index'
 import { Route as AuthenticatedMeetingsIdRouteImport } from './routes/_authenticated/meetings.$id'
 import { Route as AuthenticatedReportsBlockersRouteImport } from './routes/_authenticated/reports.blockers'
@@ -312,6 +313,12 @@ const AuthenticatedLettersIndexRoute =
     path: '/letters/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedLettersRequestRoute =
+  AuthenticatedLettersRequestRouteImport.update({
+    id: '/letters/request',
+    path: '/letters/request',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedMeetingsIndexRoute =
   AuthenticatedMeetingsIndexRouteImport.update({
     id: '/meetings/',
@@ -447,6 +454,7 @@ export interface FileRoutesByFullPath {
   '/companies/$id': typeof AuthenticatedCompaniesIdRoute
   '/events/$id': typeof AuthenticatedEventsIdRoute
   '/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
+  '/letters/request': typeof AuthenticatedLettersRequestRoute
   '/meetings/$id': typeof AuthenticatedMeetingsIdRoute
   '/reports/blockers': typeof AuthenticatedReportsBlockersRoute
   '/reports/member': typeof AuthenticatedReportsMemberRoute
@@ -507,6 +515,7 @@ export interface FileRoutesByTo {
   '/companies/$id': typeof AuthenticatedCompaniesIdRoute
   '/events/$id': typeof AuthenticatedEventsIdRoute
   '/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
+  '/letters/request': typeof AuthenticatedLettersRequestRoute
   '/meetings/$id': typeof AuthenticatedMeetingsIdRoute
   '/reports/blockers': typeof AuthenticatedReportsBlockersRoute
   '/reports/member': typeof AuthenticatedReportsMemberRoute
@@ -570,6 +579,7 @@ export interface FileRoutesById {
   '/_authenticated/companies/$id': typeof AuthenticatedCompaniesIdRoute
   '/_authenticated/events/$id': typeof AuthenticatedEventsIdRoute
   '/_authenticated/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
+  '/_authenticated/letters/request': typeof AuthenticatedLettersRequestRoute
   '/_authenticated/meetings/$id': typeof AuthenticatedMeetingsIdRoute
   '/_authenticated/reports/blockers': typeof AuthenticatedReportsBlockersRoute
   '/_authenticated/reports/member': typeof AuthenticatedReportsMemberRoute
@@ -633,6 +643,7 @@ export interface FileRouteTypes {
     | '/companies/$id'
     | '/events/$id'
     | '/fund-requests/$id'
+    | '/letters/request'
     | '/meetings/$id'
     | '/reports/blockers'
     | '/reports/member'
@@ -693,6 +704,7 @@ export interface FileRouteTypes {
     | '/companies/$id'
     | '/events/$id'
     | '/fund-requests/$id'
+    | '/letters/request'
     | '/meetings/$id'
     | '/reports/blockers'
     | '/reports/member'
@@ -755,6 +767,7 @@ export interface FileRouteTypes {
     | '/_authenticated/companies/$id'
     | '/_authenticated/events/$id'
     | '/_authenticated/fund-requests/$id'
+    | '/_authenticated/letters/request'
     | '/_authenticated/meetings/$id'
     | '/_authenticated/reports/blockers'
     | '/_authenticated/reports/member'
@@ -1096,6 +1109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedLettersIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/letters/request': {
+      id: '/_authenticated/letters/request'
+      path: '/letters/request'
+      fullPath: '/letters/request'
+      preLoaderRoute: typeof AuthenticatedLettersRequestRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/meetings/': {
       id: '/_authenticated/meetings/'
       path: '/meetings'
@@ -1262,6 +1282,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedCompaniesIdRoute: typeof AuthenticatedCompaniesIdRoute
   AuthenticatedEventsIdRoute: typeof AuthenticatedEventsIdRoute
   AuthenticatedFundRequestsIdRoute: typeof AuthenticatedFundRequestsIdRoute
+  AuthenticatedLettersRequestRoute: typeof AuthenticatedLettersRequestRoute
   AuthenticatedMeetingsIdRoute: typeof AuthenticatedMeetingsIdRoute
   AuthenticatedReportsBlockersRoute: typeof AuthenticatedReportsBlockersRoute
   AuthenticatedReportsMemberRoute: typeof AuthenticatedReportsMemberRoute
@@ -1317,6 +1338,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCompaniesIdRoute: AuthenticatedCompaniesIdRoute,
   AuthenticatedEventsIdRoute: AuthenticatedEventsIdRoute,
   AuthenticatedFundRequestsIdRoute: AuthenticatedFundRequestsIdRoute,
+  AuthenticatedLettersRequestRoute: AuthenticatedLettersRequestRoute,
   AuthenticatedMeetingsIdRoute: AuthenticatedMeetingsIdRoute,
   AuthenticatedReportsBlockersRoute: AuthenticatedReportsBlockersRoute,
   AuthenticatedReportsMemberRoute: AuthenticatedReportsMemberRoute,
