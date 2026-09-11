@@ -1,8 +1,11 @@
 # Roadmap
 
-- [ ] Migrasi: tabel content_performance + 6 view + RLS (lihat semua; input KRD/HMS/Kadiv/BPH)
-- [ ] Sidebar: tambah menu "Performa Konten" di section MARKETING setelah Content Planner (hanya tambah)
-- [ ] Halaman /content-performance: Tab Dashboard Pola (insight otomatis, 4 grafik, tabel konten terbaik, filter tanggal+platform)
-- [ ] Tab Catatan: daftar menunggu dicatat, tabel tercatat (search/filter, edit, arsipkan), modal input 4 langkah
-- [ ] Dashboard utama: kartu "Konten belum dicatat: N" untuk KRD/HMS/BPH (sembunyi jika 0)
-- [ ] Verifikasi: typecheck/build + uji browser
+- [x] Skema content_performance + view: sudah ada di database eksternal, tidak diubah
+- [x] Sidebar: menu "Performa Konten" sudah ada di MARKETING setelah Content Planner
+- [x] Halaman /content-performance: Tab Dashboard Pola (insight otomatis, 4 grafik recharts, konten terbaik, filter tanggal+platform)
+- [x] Tab Catatan: kartu kuning menunggu dicatat, tabel + search/filter, menu titik-tiga Edit/Arsipkan, modal input 4 langkah
+- [x] Dashboard utama: kartu "Konten belum dicatat: N" (PerformanceReminderCard, tersembunyi jika 0)
+- [x] Verifikasi: typecheck bersih, build OK, route aktif (redirect login sesuai auth gate)
+
+## Catatan terbuka (menunggu user)
+- Jika data tidak muncul setelah login: kemungkinan GRANT ke role `authenticated` belum ada di database eksternal — user perlu menjalankan SQL GRANT di SQL editor Supabase mereka.
