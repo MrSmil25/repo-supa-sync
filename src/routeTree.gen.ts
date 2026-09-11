@@ -22,6 +22,7 @@ import { Route as AuthenticatedCashRouteImport } from './routes/_authenticated/c
 import { Route as AuthenticatedCoachingRouteImport } from './routes/_authenticated/coaching'
 import { Route as AuthenticatedCommandCenterRouteImport } from './routes/_authenticated/command-center'
 import { Route as AuthenticatedContentCalendarRouteImport } from './routes/_authenticated/content-calendar'
+import { Route as AuthenticatedContentPerformanceRouteImport } from './routes/_authenticated/content-performance'
 import { Route as AuthenticatedContentPlannerRouteImport } from './routes/_authenticated/content-planner'
 import { Route as AuthenticatedContributionsRouteImport } from './routes/_authenticated/contributions'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -133,6 +134,12 @@ const AuthenticatedContentCalendarRoute =
   AuthenticatedContentCalendarRouteImport.update({
     id: '/content-calendar',
     path: '/content-calendar',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedContentPerformanceRoute =
+  AuthenticatedContentPerformanceRouteImport.update({
+    id: '/content-performance',
+    path: '/content-performance',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedContentPlannerRoute =
@@ -406,6 +413,7 @@ export interface FileRoutesByFullPath {
   '/coaching': typeof AuthenticatedCoachingRoute
   '/command-center': typeof AuthenticatedCommandCenterRoute
   '/content-calendar': typeof AuthenticatedContentCalendarRoute
+  '/content-performance': typeof AuthenticatedContentPerformanceRoute
   '/content-planner': typeof AuthenticatedContentPlannerRoute
   '/contributions': typeof AuthenticatedContributionsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -465,6 +473,7 @@ export interface FileRoutesByTo {
   '/coaching': typeof AuthenticatedCoachingRoute
   '/command-center': typeof AuthenticatedCommandCenterRoute
   '/content-calendar': typeof AuthenticatedContentCalendarRoute
+  '/content-performance': typeof AuthenticatedContentPerformanceRoute
   '/content-planner': typeof AuthenticatedContentPlannerRoute
   '/contributions': typeof AuthenticatedContributionsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -525,6 +534,7 @@ export interface FileRoutesById {
   '/_authenticated/coaching': typeof AuthenticatedCoachingRoute
   '/_authenticated/command-center': typeof AuthenticatedCommandCenterRoute
   '/_authenticated/content-calendar': typeof AuthenticatedContentCalendarRoute
+  '/_authenticated/content-performance': typeof AuthenticatedContentPerformanceRoute
   '/_authenticated/content-planner': typeof AuthenticatedContentPlannerRoute
   '/_authenticated/contributions': typeof AuthenticatedContributionsRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
@@ -586,6 +596,7 @@ export interface FileRouteTypes {
     | '/coaching'
     | '/command-center'
     | '/content-calendar'
+    | '/content-performance'
     | '/content-planner'
     | '/contributions'
     | '/dashboard'
@@ -645,6 +656,7 @@ export interface FileRouteTypes {
     | '/coaching'
     | '/command-center'
     | '/content-calendar'
+    | '/content-performance'
     | '/content-planner'
     | '/contributions'
     | '/dashboard'
@@ -704,6 +716,7 @@ export interface FileRouteTypes {
     | '/_authenticated/coaching'
     | '/_authenticated/command-center'
     | '/_authenticated/content-calendar'
+    | '/_authenticated/content-performance'
     | '/_authenticated/content-planner'
     | '/_authenticated/contributions'
     | '/_authenticated/dashboard'
@@ -851,6 +864,13 @@ declare module '@tanstack/react-router' {
       path: '/content-calendar'
       fullPath: '/content-calendar'
       preLoaderRoute: typeof AuthenticatedContentCalendarRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/content-performance': {
+      id: '/_authenticated/content-performance'
+      path: '/content-performance'
+      fullPath: '/content-performance'
+      preLoaderRoute: typeof AuthenticatedContentPerformanceRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/content-planner': {
@@ -1195,6 +1215,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedCoachingRoute: typeof AuthenticatedCoachingRoute
   AuthenticatedCommandCenterRoute: typeof AuthenticatedCommandCenterRoute
   AuthenticatedContentCalendarRoute: typeof AuthenticatedContentCalendarRoute
+  AuthenticatedContentPerformanceRoute: typeof AuthenticatedContentPerformanceRoute
   AuthenticatedContentPlannerRoute: typeof AuthenticatedContentPlannerRoute
   AuthenticatedContributionsRoute: typeof AuthenticatedContributionsRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
@@ -1248,6 +1269,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCoachingRoute: AuthenticatedCoachingRoute,
   AuthenticatedCommandCenterRoute: AuthenticatedCommandCenterRoute,
   AuthenticatedContentCalendarRoute: AuthenticatedContentCalendarRoute,
+  AuthenticatedContentPerformanceRoute: AuthenticatedContentPerformanceRoute,
   AuthenticatedContentPlannerRoute: AuthenticatedContentPlannerRoute,
   AuthenticatedContributionsRoute: AuthenticatedContributionsRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
