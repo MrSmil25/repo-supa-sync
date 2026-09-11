@@ -100,9 +100,9 @@ function defaultFrom() {
 }
 
 function monthLabel(key: string) {
-  const [year, month] = key.split("-").map(Number);
+  const [year = 2026, month = 1] = key.split("-").map(Number);
   return new Intl.DateTimeFormat("id-ID", { month: "short", year: "numeric" }).format(
-    new Date(year, (month ?? 1) - 1, 1),
+    new Date(year, month - 1, 1),
   );
 }
 
@@ -217,7 +217,7 @@ function ContentPerformancePage() {
 
 type Aggregate = {
   key: string;
-  color?: string | null;
+  color?: string | null | undefined;
   jumlah: number;
   totalReach: number;
   totalEngagement: number;
@@ -298,7 +298,7 @@ function DashboardPol({
     const map = new Map<number, Aggregate>();
     for (const record of filtered) {
       const day = new Date(`${record.posted_date}T00:00:00`).getDay();
-      if (!map.has(day)) map.set(day, newAggregate(DAY_NAMES[day]));
+      if (!map.has(day)) map.set(day, newAggregate(DAY_NAMES[day] ?? "-"));
       addToAggregate(map.get(day)!, record);
     }
     return DAY_ORDER.filter((day) => map.has(day)).map((day) => ({
